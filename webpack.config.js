@@ -1,5 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 module.exports = {
   entry: './src/main.ts',
   output: {
@@ -34,5 +36,7 @@ if (process.env.NODE_ENV === 'production') {
       sourceMap: true,
       compress: { warnings: false }
     }),
-    new webpack.LoaderOptionsPlugin({ minimize: true })]);
+    new webpack.LoaderOptionsPlugin({ minimize: true }),
+    new BundleAnalyzerPlugin()
+    ]);
 }
